@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import MapComponent from './components/Map';  // MapComponent 경로 수정
-import AddPlace from './components/AddPlace';  // AddPlace 경로 수정
+import MapComponent from './components/Map'; 
+import AddPlace from './components/AddPlace';
 
 
 function App() {

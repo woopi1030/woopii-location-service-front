@@ -1,27 +1,24 @@
-import { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = async () => {
-  const response = await fetch("/firebase-config.json"); // public 폴더의 파일을 읽어옴
-  const config = await response.json(); // JSON으로 파싱
+  const response = await fetch("/firebase-config.json");
+  const config = await response.json();
   return config;
 };
 
-const FirebaseInit = () => {
-  const [app, setApp] = useState(null);
-  
-  useEffect(() => {
-    const setupFirebase = async () => {
-      const config = await firebaseConfig();
-      const app = initializeApp(config); // Firebase 초기화
-      setApp(app);
-    };
-    
-    setupFirebase();
-  }, []);
+// Firebase 초기화
+let app;
+let db;
 
-  return <div>{app ? "Firebase가 초기화되었습니다!" : "Firebase 초기화 중..."}</div>;
+const setupFirebase = async () => {
+  if (!app) {
+    const config = await firebaseConfig();
+    app = initializeApp(config);
+    db = getFirestore(app);
+  }
 };
 
-export default FirebaseInit;
+await setupFirebase(); // Firebase 설정 완료
+
+export { app, db };
