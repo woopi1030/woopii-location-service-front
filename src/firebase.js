@@ -1,24 +1,23 @@
+// Firebase 관련 SDK들 가져오기
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";  // Firestore 기능 추가
 
-const firebaseConfig = async () => {
-  const response = await fetch("/firebase-config.json");
-  const config = await response.json();
-  return config;
+
+// Firebase 설정
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 
 // Firebase 초기화
-let app;
-let db;
+const app = initializeApp(firebaseConfig);
 
-const setupFirebase = async () => {
-  if (!app) {
-    const config = await firebaseConfig();
-    app = initializeApp(config);
-    db = getFirestore(app);
-  }
-};
+// Firestore 초기화
+const db = getFirestore(app);
 
-await setupFirebase(); // Firebase 설정 완료
-
-export { app, db };
+// Firestore와 관련된 기능을 export
+export { db };

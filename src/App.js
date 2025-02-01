@@ -11,9 +11,11 @@ function App() {
         <h1>React 샘플 페이지</h1>
         <p>React로 첫 페이지를 만들어 봅시다!</p>
       </header>
-      <h1>🗺️ OpenStreetMap 지도</h1>
-      <AddPlace />
-      <MapComponent />
+      <body className="App-body">
+        <h1>🗺️ OpenStreetMap 지도</h1>
+        <AddPlace />
+        <MapComponent />  
+      </body>
     </div>
   );
 }
