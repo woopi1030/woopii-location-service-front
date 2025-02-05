@@ -2,6 +2,7 @@ import { useState } from "react";
 import { addPlace } from "../services/firestore";
 
 const AddPlace = () => {
+  const [category, setCategory] = useState("");
   const [name, setName] = useState("");
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
@@ -9,9 +10,11 @@ const AddPlace = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name || !lat || !lng) return alert("모든 필드를 입력하세요!");
-    await addPlace(name, parseFloat(lat), parseFloat(lng));
+    await addPlace("sample", name, parseFloat(lat), parseFloat(lng));
     alert("✅ 장소가 추가되었습니다!");
-    setName(""); setLat(""); setLng("");
+    setName(""); 
+    setLat(""); 
+    setLng("");
   };
 
   return (

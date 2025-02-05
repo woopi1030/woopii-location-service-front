@@ -9,3 +9,7 @@ woopii-location-service-front
 
 - start
   - npm start
+
+- firebase
+  - project명
+    - woopii-location-sample

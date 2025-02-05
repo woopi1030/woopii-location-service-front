@@ -6,7 +6,7 @@ import { getPlaces } from "../services/firestore";
 
 const center = [37.5665, 126.9780]; // 기본 중심 위치 (서울)
 
-// 📌 커스텀 아이콘 설정
+// 커스텀 아이콘 설정
 const customIcon = L.icon({
   iconUrl: "/free-icon-location-marker.png", // public 폴더 내 아이콘 경로
   iconSize: [32, 32], // 아이콘 크기 조절

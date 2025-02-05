@@ -2,9 +2,9 @@ import { collection, addDoc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
 // Firestore에 장소 추가 함수
-export const addPlace = async (name, lat, lng) => {
+export const addPlace = async (category, name, lat, lng) => {
   try {
-    await addDoc(collection(db, "places"), { name, lat, lng });
+    await addDoc(collection(db, "places"), {category, name, lat, lng });
     console.log("✅ 장소가 Firestore에 추가되었습니다!");
   } catch (error) {
     console.error("❌ Firestore 저장 오류:", error);
